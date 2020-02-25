@@ -14,11 +14,11 @@ window.onload = function() {
      <style>
      .body{
      overflow-x: hidden;
-	background-color: blue;
+  background-image: linear-gradient(to right, #6600cc , #33ccff, #6600cc);
      }
      .ti{
      text-align:center;
-     font-size: 60px;
+     font-size: 90px;
      color: white;
      }
 .mute{
@@ -27,7 +27,8 @@ window.onload = function() {
     justify-content: flex-end;
     border: 1px solid black;
     padding: 10px;
-    
+}
+.btn{    font-size: 25px;
 }
 .buttons{
 
@@ -51,12 +52,12 @@ height: 100px;
 transform: perspective (600px) rotateY (0deg);
 
 }
+
+
 .container{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-                 border: 1px solid white;
-    padding: 10px;
     
 }
 
@@ -187,9 +188,9 @@ label:hover :checked + .card {
   Your browser does not support the audio element.
 </audio>
 
-<div class = mute>
-	<button class = "btn" onclick="pauseAudio()" type="button">Pause Audio</button> 
-</div>
+<!--<div class = mute>
+	<button class = "btn" onclick="pauseAudio()" type="button">🔇</button> 
+</div>--!>
 
 
 <div class = "ti"> 
@@ -243,6 +244,8 @@ label:hover :checked + .card {
 
 </label>
 </div>
+
+
 
 
 
