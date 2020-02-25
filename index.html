@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <script>
+window.onload = function() {
+  var context = new AudioContext();
+}
+</script>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="proj/styles/home.css">
+ <link rel="SHORTCUT ICON" href="proj/images/icn.png" type="image/png">
+   <title>Интеллектуальное шоу</title>
+   
+     <style>
+     .body{
+     overflow-x: hidden;
+	background-color: blue;
+     }
+     .ti{
+     text-align:center;
+     font-size: 60px;
+     color: white;
+     }
+.mute{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    border: 1px solid black;
+    padding: 10px;
+    
+}
+.buttons{
+
+width: 100px;
+height: 100px;
+    display: inline-block; /* Строчно-блочный элемент */
+
+
+}
+.button {
+  width: 150px;
+    border: 2px solid black;
+    background-color: green;
+    height: 150px;
+    border-right: 0px;
+    color:white;
+    cursor: pointer;
+    
+}
+.back{
+transform: perspective (600px) rotateY (0deg);
+
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+                 border: 1px solid white;
+    padding: 10px;
+    
+}
+
+#con1{
+    width: 150px;
+    border: 2px solid black;
+    background-color: green;
+    height: 150px;
+    border-right: 0px;
+}
+
+#con2{
+    width: 100%;
+    border: 2px solid black;
+    background-color: yellow;
+    height: 300px;
+}
+#con3{
+    width: 150px;
+    border: 2px solid black;
+    border-left: 0px;
+    background-color: green;
+    height: 150px;
+}
+
+
+
+
+
+
+
+label {
+
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+        display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    border: 1px white;
+
+    cursor: pointer;
+}
+
+.card {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: all 600ms;
+    transition: all 600ms;
+    z-index: 20;
+    font-size: 140px;
+     
+
+
+
+}
+
+    .card div {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+
+        text-align: center;
+        line-height: 200px;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        
+        border: 5px solid white;
+             background: #1A2455;
+                     color: white;
+    }
+
+    .card .back {
+
+
+        -webkit-transform: rotateY(-180deg);
+        transform: rotateY(-180deg);
+        
+        border: 5px solid white;
+             background: #1A2455;
+                     color: white;
+    }
+
+label:hover .card {
+    -webkit-transform: rotateY(-10deg);
+    transform: rotateY(-10deg);
+    box-shadow: 0 20px 20px rgba(50,50,50,.2);
+}
+
+input {
+    display: none;
+}
+
+:checked + .card {
+    transform: rotateY(-180deg);
+    -webkit-transform: rotateY(-180deg);
+}
+
+label:hover :checked + .card {
+    transform: rotateY(-170deg);
+    -webkit-transform: rotateY(-170deg);
+    box-shadow: 0 20px 20px rgba(255,255,255,.2);
+}
+
+     </style>
+
+ </head>
+ 
+ <body class = "body">
+ 
+
+<audio id="myAudio">
+  <source src="media/pole.mp3" type="audio/ogg">
+  <source src="media/pole.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<audio id="myAudio2">
+  <source src="media/daladno.wav" type="audio/ogg">
+  <source src="media/daladno.wav" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<div class = mute>
+	<button class = "btn" onclick="pauseAudio()" type="button">Pause Audio</button> 
+</div>
+
+
+<div class = "ti"> 
+ <p >ТЫ - </p>
+</div>
+
+<div class="container">
+
+<label style="display:inline">
+    <input type="checkbox"  />
+    <div class="card" onclick=" bool1(); molodets();" type="button">
+        <div class="front"></div>
+        <div class="back">П</div>
+    </div>
+
+</label>
+
+<label style="display:inline">
+    <input type="checkbox"  />
+    <div class="card" onclick=" bool2(); molodets();" type="button">
+        <div class="front"></div>
+        <div class="back">И</div>
+    </div>
+
+</label>
+
+<label style="display:inline">
+    <input type="checkbox"  />
+    <div class="card" onclick="bool3(); molodets();"  type="button">
+        <div class="front"></div>
+        <div class="back">Д</div>
+    </div>
+
+</label>
+
+<label style="display:inline">
+    <input type="checkbox"  />
+    <div class="card" onclick="bool4();molodets();" type="button">
+        <div class="front"></div>
+        <div class="back">О</div>
+    </div>
+
+</label>
+
+<label style="display:inline">
+    <input type="checkbox"  />
+    <div class="card" onclick="bool5(); molodets();"  type="button">
+        <div class="front"></div>
+        <div class="back">Р</div>
+    </div>
+
+</label>
+</div>
+
+
+
+
+
+
+
+<script>
+var x = document.getElementById("myAudio"); 
+var y = document.getElementById("myAudio2"); 
+
+b1 = false;
+b2 = false;
+b3 = false;
+b4 = false;
+b5 = false;
+
+function playAudio() { 
+setTimeout(function(){ 
+
+x.play(); 
+
+}, 8000) 
+} 
+
+function pauseAudio() { 
+  x.pause();
+} 
+
+function bool1(){
+if (b1 == false){
+	b1 = true;
+}
+else{
+b1 = false;
+}
+}
+
+function bool2(){
+if (b2 == false){
+	b2 = true;
+}
+else{
+b2 = false;
+}
+}
+
+function bool3(){
+if (b3 == false){
+	b3 = true;
+}
+else{
+b3 = false;
+}
+}
+
+function bool4(){
+if (b4 == false){
+	b4 = true;
+}
+else{
+b4 = false;
+}
+}
+
+function bool5(){
+if (b5 == false){
+	b5 = true;
+}
+else{
+b5 = false;
+}
+
+}
+
+function molodets() {
+	if (b1 == true && b2 == true && b3 == true && b4 == true && b5 == true){
+		   
+setTimeout(function(){ 
+
+x.pause(); 
+
+}, 100) 
+
+		  y.play();
+	}
+	else{
+	  x.play(); 
+	}
+	
+}
+
+</script>
+
+</body>
+</html>
